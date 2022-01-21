@@ -23,6 +23,7 @@ app.register(mercurius, {
     }
   },
   graphiql: true,
+  path: '/',
 })
 
 app
