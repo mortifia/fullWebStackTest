@@ -1,8 +1,8 @@
 {
     "ignore": [""],
-    "watch": ["src"],
+    "watch": ["src","prisma"],
     "exec": "npm run build-start-dev",
-    "ext": "ts",
+    "ext": "ts,prisma",
     "env": {
         "NODE_ENV": "development"
     }

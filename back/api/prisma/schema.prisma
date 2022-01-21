@@ -16,8 +16,25 @@ datasource db {
 }
 
 model Book {
-  id        Int     @id @default(autoincrement())
+  id        Int          @id @default(autoincrement())
   title     String
   body      String
   published Boolean
+  author    BookAuthor[]
+
+}
+
+model User {
+  id     Int          @id @default(autoincrement())
+  alias  String       @unique
+  author BookAuthor[]
+}
+
+model BookAuthor {
+  bookId   Int
+  authorId Int
+
+  Book Book @relation(fields: [bookId], references: [id])
+  User User @relation(fields: [authorId], references: [id])
+  @@id([bookId, authorId])
 }

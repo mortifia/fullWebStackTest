@@ -1,5 +1,5 @@
 import { extendType, objectType } from 'nexus'
-import { Book } from 'nexus-prisma'
+import { Book } from 'nexus-prisma/dist-cjs/runtime/index'
 
 const book = objectType({
   name: Book.$name,
