@@ -1,0 +1,9 @@
+{
+    "ignore": [""],
+    "watch": ["src"],
+    "exec": "npm run build-start-dev",
+    "ext": "ts",
+    "env": {
+        "NODE_ENV": "development"
+    }
+}
