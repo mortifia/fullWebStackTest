@@ -1,6 +1,6 @@
 import { objectType } from 'nexus'
 
-export * from './book.js'
+export * from './book'
 
 //export * from './post'
 

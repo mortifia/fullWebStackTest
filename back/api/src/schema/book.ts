@@ -1,5 +1,7 @@
+import { PrismaClient } from '@prisma/client'
 import { extendType, objectType } from 'nexus'
 import { Book } from 'nexus-prisma/dist-cjs/runtime/index'
+import { context } from '../index'
 
 const book = objectType({
   name: Book.$name,
@@ -14,8 +16,11 @@ const book = objectType({
 export const bookQuery = extendType({
   type: 'Query',
   definition(t) {
-    t.field('books', {
+    t.list.field('books', {
       type: book,
+      resolve(_, __, ctx: context) {
+        return ctx.prisma.book.findMany({})
+      },
     })
   },
 })

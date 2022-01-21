@@ -1,7 +1,7 @@
 import { GraphQLSchema } from 'graphql'
 import { makeSchema } from 'nexus'
 
-import * as allTypes from './schema/index.js'
+import * as allTypes from './schema'
 
 export const schema = makeSchema({
   types: allTypes,

@@ -34,7 +34,7 @@ model BookAuthor {
   bookId   Int
   authorId Int
 
-  Book Book @relation(fields: [bookId], references: [id])
-  User User @relation(fields: [authorId], references: [id])
+  Book   Book @relation(fields: [bookId], references: [id])
+  Author User @relation(fields: [authorId], references: [id])
   @@id([bookId, authorId])
 }
