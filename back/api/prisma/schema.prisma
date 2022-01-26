@@ -12,7 +12,11 @@ generator nexusPrisma {
 datasource db {
   provider = "sqlite"
   url      = "file:./dev.db"
+}
 
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("DATABASE_URL")
 }
 
 model Book {
@@ -26,7 +30,7 @@ model Book {
 
 model User {
   id     Int          @id @default(autoincrement())
-  alias  String       @unique
+  alias  String[]     @unique
   author BookAuthor[]
 }
 
@@ -34,7 +38,7 @@ model BookAuthor {
   bookId   Int
   authorId Int
 
-  Book   Book @relation(fields: [bookId], references: [id])
-  Author User @relation(fields: [authorId], references: [id])
+  Book Book @relation(fields: [bookId], references: [id])
+  User User @relation(fields: [authorId], references: [id])
   @@id([bookId, authorId])
 }
