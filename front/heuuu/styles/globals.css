@@ -14,3 +14,13 @@ a {
 * {
   box-sizing: border-box;
 }
+
+:root {
+  --background: white;
+  --foreground: black;
+}
+
+[data-theme='dark'] {
+  --background: #303030;
+  --foreground: white;
+}
