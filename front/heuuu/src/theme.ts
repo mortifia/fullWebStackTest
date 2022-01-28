@@ -35,4 +35,6 @@ export const themeOptions: ThemeOptions = {
 
 // Create a theme instance.
 
-export default themeOptions
+export const theme =createTheme(themeOptions)
+
+export default theme

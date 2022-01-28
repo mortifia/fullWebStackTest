@@ -3,8 +3,26 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Switch from '@mui/material/Switch'
+import { useContext } from 'react'
+import { ThemeModeContext, useThemeMode } from './_app'
+import { useTheme } from '@mui/material/styles'
+import React from 'react'
+
+import { DarkMode, LightMode, Menu } from '@mui/icons-material'
+import {
+  AppBar,
+  Checkbox,
+  Divider,
+  Drawer,
+  IconButton,
+  Toolbar,
+  Typography,
+} from '@mui/material'
 
 const Home: NextPage = () => {
+  const theme = useTheme()
+  const colorMode = React.useContext(ThemeModeContext)
+  const [open, setOpen] = React.useState(false)
   return (
     <div className={styles.container}>
       <Head>
@@ -15,12 +33,46 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         coucou
-        <div>
-          The current theme is: {true}
-          <Switch defaultChecked checked={true} onChange={() => {}} />
-          {/* <button onClick={() => setTheme('coucou')}>Light Mode</button>
-          <button onClick={() => false}>Dark Mode</button> */}
-        </div>
+        <div>The current theme mode is: {theme.palette.mode}</div>
+        {/* <Switch
+          checked={theme.palette.mode === 'dark' ? true : false}
+          checkedIcon={<DarkModeIcon fontSize="small" />}
+          icon={<LightModeIcon fontSize="small" />}
+          onChange={colorMode.toggleMode}
+          className={styles.pls}
+        /> */}
+        <AppBar>
+          <Toolbar>
+            <IconButton
+              size="large"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+              onClick={() => {
+                setOpen(!open)
+              }}
+            >
+              <Menu />
+            </IconButton>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Heuuu
+            </Typography>
+            <Checkbox
+              checkedIcon={<DarkMode />}
+              icon={<LightMode />}
+              checked={theme.palette.mode === 'dark' ? true : false}
+              onClick={colorMode.toggleMode}
+            />
+          </Toolbar>
+        </AppBar>
+        <Drawer
+          open={open}
+          onClose={() => {
+            setOpen(!open)
+          }}
+        >
+          <div>coucou</div>
+          <Divider />
+        </Drawer>
       </main>
 
       <footer></footer>

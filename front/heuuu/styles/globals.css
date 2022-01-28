@@ -1,4 +1,4 @@
-html,
+/* html,
 body {
   padding: 0;
   margin: 0;
@@ -23,4 +23,9 @@ a {
 [data-theme='dark'] {
   --background: #303030;
   --foreground: white;
+} */
+
+.pls.Mui-checked {
+  padding: 3px red;
+  color: blueviolet;
 }

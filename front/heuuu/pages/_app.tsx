@@ -14,35 +14,61 @@
 
 // export default MyApp
 
-import * as React from 'react'
+import '../styles/globals.css'
+import '@fontsource/mulish'
+import type { AppProps } from 'next/app'
+import { ThemeProvider } from '@mui/material/styles'
+import {
+  createTheme,
+  CssBaseline,
+  PaletteMode,
+  useMediaQuery,
+} from '@mui/material'
 import Head from 'next/head'
-import { AppProps } from 'next/app'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
-import CssBaseline from '@mui/material/CssBaseline'
-import { CacheProvider, EmotionCache } from '@emotion/react'
+import React from 'react'
 import { themeOptions } from '../src/theme'
-import createEmotionCache from '../src/createEmotionCache'
+import { ThemeProvider as userThemeProvider } from 'next-themes'
 
-// Client-side cache, shared for the whole session of the user in the browser.
-const clientSideEmotionCache = createEmotionCache()
-
-interface MyAppProps extends AppProps {
-  emotionCache?: EmotionCache
+export const ThemeModeContext = React.createContext({
+  toggleMode: () => {},
+})
+export const useThemeMode = () => {
+  React.useContext(ThemeModeContext)
 }
 
-export default function MyApp(props: MyAppProps) {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
-  const theme = createTheme(themeOptions)
+function MyApp({ Component, pageProps }: AppProps) {
+  //-----test-----
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
+  const [mode, setMode] = React.useState<PaletteMode>(
+    prefersDarkMode ? 'dark' : 'light'
+  ) //future interaction avec la variable
+  const Mode = React.useMemo(
+    () => ({
+      toggleMode: () => {
+        setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'))
+      },
+    }),
+    []
+  )
+  const theme = React.useMemo(() => {
+    const tmp = themeOptions
+    themeOptions.palette!.mode = mode
+    return createTheme(tmp)
+  }, [mode])
+  //-----ebd test-----
   return (
-    <CacheProvider value={emotionCache}>
+    <>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </CacheProvider>
+      <ThemeModeContext.Provider value={Mode}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </ThemeModeContext.Provider>
+    </>
   )
 }
+
+export default MyApp
