@@ -1,11 +1,15 @@
-/* html,
+html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+
+  font-family: Mulish, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 32px;
 }
 
+/*
 a {
   color: inherit;
   text-decoration: none;
@@ -24,8 +28,3 @@ a {
   --background: #303030;
   --foreground: white;
 } */
-
-.pls.Mui-checked {
-  padding: 3px red;
-  color: blueviolet;
-}
