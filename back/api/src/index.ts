@@ -27,5 +27,5 @@ app.register(mercurius, {
 })
 
 app
-  .listen(3000)
-  .then(() => console.log(`🚀 Server ready at http://localhost:3000/graphiql`))
+  .listen(3010)
+  .then(() => console.log(`🚀 Server ready at http://localhost:3010/graphiql`))

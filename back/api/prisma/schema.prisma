@@ -17,28 +17,34 @@ datasource db {
 // datasource db {
 //   provider = "postgresql"
 //   url      = env("DATABASE_URL")
+//}
+
+model Article {
+  id   Int      @id @default(autoincrement())
+  on   DateTime @default(now())
+  text String
 }
 
-model Book {
-  id        Int          @id @default(autoincrement())
-  title     String
-  body      String?
-  published Boolean
-  author    BookAuthor[]
+// model Book {
+//   id        Int          @id @default(autoincrement())
+//   title     String
+//   body      String?
+//   published Boolean
+//   author    BookAuthor[]
 
-}
+// }
 
-model User {
-  id     Int          @id @default(autoincrement())
-  alias  String[]     @unique
-  author BookAuthor[]
-}
+// model User {
+//   id     Int          @id @default(autoincrement())
+//   alias  String[]     @unique
+//   author BookAuthor[]
+// }
 
-model BookAuthor {
-  bookId   Int
-  authorId Int
+// model BookAuthor {
+//   bookId   Int
+//   authorId Int
 
-  Book Book @relation(fields: [bookId], references: [id])
-  User User @relation(fields: [authorId], references: [id])
-  @@id([bookId, authorId])
-}
+//   Book Book @relation(fields: [bookId], references: [id])
+//   User User @relation(fields: [authorId], references: [id])
+//   @@id([bookId, authorId])
+// }
