@@ -53,8 +53,8 @@ function Home(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
           {props.articles.map(article => {
             return (
               <div key={article.id}>
-                id: {article.id} | on: {article.on}| test:
-                {dateTimezone(article.on).toUTCString()} | text: {article.text}
+                id: {article.id} | on: {dateTimezone(article.on).toUTCString()}{' '}
+                | text: {article.text}
               </div>
             )
           })}

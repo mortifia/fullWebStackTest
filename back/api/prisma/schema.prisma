@@ -9,20 +9,20 @@ generator nexusPrisma {
   provider = "nexus-prisma"
 }
 
-datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
-}
-
 // datasource db {
-//   provider = "postgresql"
-//   url      = env("DATABASE_URL")
-//}
+//   provider = "sqlite"
+//   url      = "file:./dev.db"
+// }
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
 
 model Article {
   id   Int      @id @default(autoincrement())
-  on   DateTime @default(now())
-  text String
+  on   DateTime @default(now()) @db.Timestamptz()
+  text Json
 }
 
 // model Book {
