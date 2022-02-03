@@ -17,15 +17,13 @@ type article = {
 }
 
 export const getServerSideProps = async () => {
-  const articles = (
-    await (
-      await fetch('http://localhost:3010/', {
-        method: 'post',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: `{ articles{ id on text}}` }),
-      })
-    ).json()
-  ).data.articles as article[]
+  const articles = await await fetch('http://localhost:3010/', {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query: `{ articles{ id on text}}` }),
+  })
+
+  console.log(await articles.json())
   return {
     props: {
       articles,
@@ -50,14 +48,14 @@ function Home(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
         <div>coucou</div>
         <div>heuuu 1. 2. ? </div>
         <div>
-          {props.articles.map(article => {
+          {/* {props.articles.map(article => {
             return (
               <div key={article.id}>
                 id: {article.id} | on: {dateTimezone(article.on).toUTCString()}{' '}
                 | text: {article.text}
               </div>
             )
-          })}
+          })} */}
         </div>
       </main>
       <div></div>

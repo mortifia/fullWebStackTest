@@ -7,4 +7,4 @@ export const schema = makeSchema({
   types: allTypes,
 })
 
-// console.dir(schema, { depth: null })
+//console.dir(schema, { depth: null })

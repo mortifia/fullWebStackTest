@@ -22,7 +22,7 @@ datasource db {
 model Article {
   id   Int      @id @default(autoincrement())
   on   DateTime @default(now()) @db.Timestamptz()
-  text Json
+  data String   @default("")
 }
 
 // model Book {

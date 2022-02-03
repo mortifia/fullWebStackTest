@@ -2,10 +2,6 @@ import { objectType } from 'nexus'
 
 export * from './article'
 
-//export * from './post'
-
-//export * from './comment'
-
 export const query = objectType({
   name: 'Query',
   definition(t) {
