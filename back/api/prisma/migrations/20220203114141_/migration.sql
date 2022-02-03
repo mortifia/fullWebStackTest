@@ -2,7 +2,8 @@
 CREATE TABLE "Article" (
     "id" SERIAL NOT NULL,
     "on" TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "text" JSONB NOT NULL,
+    "private" BOOLEAN NOT NULL DEFAULT true,
+    "data" JSONB NOT NULL,
 
     CONSTRAINT "Article_pkey" PRIMARY KEY ("id")
 );

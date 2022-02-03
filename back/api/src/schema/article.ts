@@ -13,6 +13,8 @@ import { GraphQLDateTime } from 'graphql-iso-date'
 import GraphQLJSON from 'graphql-type-json'
 
 export const GQLDate = asNexusMethod(GraphQLDateTime, 'DateTime')
+GraphQLJSON.name = 'Json'
+export const GQLJson = asNexusMethod(GraphQLJSON, 'Json')
 
 const _article = objectType({
   name: Article.$name,
@@ -20,6 +22,8 @@ const _article = objectType({
   definition(t) {
     t.field(Article.id)
     t.field(Article.on)
+    t.field(Article.private)
+    t.field(Article.title)
     t.field(Article.data)
   },
 })
@@ -28,7 +32,9 @@ const _articleInput = inputObjectType({
   name: Article.$name + 'Input',
   description: Article.$description,
   definition(t) {
+    t.nonNull.field(Article.title)
     t.nonNull.field(Article.data)
+    t.nullable.boolean(Article.private.name)
   },
 })
 
@@ -36,10 +42,11 @@ export const article = extendType({
   type: 'Query',
   definition(t) {
     t.list.field('articles', {
-      type: list(_article),
+      type: _article,
       async resolve(_, __, ctx: context) {
-        // return ctx.prisma.article.findMany()
-        return await ctx.prisma.article.findMany()
+        const tmp = await ctx.prisma.article.findMany()
+        // console.log(tmp)
+        return tmp
       },
     })
   },
@@ -48,15 +55,22 @@ export const article = extendType({
 export const articleAdd = extendType({
   type: 'Mutation',
   definition(t) {
-    t.list.field('booksAdd', {
+    t.list.field('articlesAdd', {
       type: _article,
-      args: { article: _articleInput },
+      args: { articles: list(_articleInput) },
       async resolve(
         _,
-        __: { article: Prisma.ArticleCreateInput },
+        __: { articles: Prisma.ArticleCreateInput[] },
         ctx: context
       ) {
-        const tmp = await ctx.prisma.article.create({ data: __.article })
+        const tmp = (
+          await Promise.allSettled(
+            __.articles.map(article =>
+              ctx.prisma.article.create({ data: article })
+            )
+          )
+        ).map(r => (r.status === 'fulfilled' ? r.value : r.reason))
+        // console.log(tmp)
         return tmp
       },
     })
