@@ -29,6 +29,7 @@ export const getServerSideProps = async () => {
       })
     ).json()
   ).data.articles as article[]
+  console.log(articles[0])
 
   //console.dir(JSON.parse(articles[0]?.data || ''), { depth: undefined })
   return {
@@ -54,18 +55,36 @@ function Home(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
       <main className={styles.main}>
         <div>coucou</div>
         <div>heuuu 1. 2. ? </div>
-        <div>
-          {props.articles.map(article => {
-            return (
-              <div key={article.id}>
-                id: {article.id} | on:
-                {article.on ? dateTimezone(article.on).toUTCString() : null} |
-                data:
-                {article.data}
-              </div>
-            )
-          })}
-        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>private</th>
+              <th>on</th>
+              <th>title</th>
+              <th>data</th>
+            </tr>
+          </thead>
+          <tbody>
+            {props.articles.map(article => {
+              return (
+                <tr key={article.id}>
+                  <th>{article.id}</th>
+                  <th>{article?.private?.toString()}</th>
+                  <th>
+                    {article.on ? dateTimezone(article.on).toUTCString() : null}
+                  </th>
+                  <th>{article.title}</th>
+                  <th>{article.data}</th>
+                  {/* id: {article.id} | on:
+                  {article.on ? dateTimezone(article.on).toUTCString() : null} |
+                  data:
+                  {article.data} */}
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
       </main>
       <div></div>
 

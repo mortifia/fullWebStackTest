@@ -20,9 +20,10 @@ datasource db {
 }
 
 model Article {
-  id      Int      @id @default(autoincrement())
-  on      DateTime @default(now()) @db.Timestamptz()
-  private Boolean  @default(true)
-  title   String
-  data    Json
+  id       Int      @id @default(autoincrement())
+  on       DateTime @default(now()) @db.Timestamptz()
+  private  Boolean  @default(true)
+  title    String
+  data     String
+  print_nb Int      @default(0)
 }

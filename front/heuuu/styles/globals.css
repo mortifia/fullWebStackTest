@@ -6,7 +6,24 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
 
   font-family: Mulish, Roboto, Helvetica, Arial, sans-serif;
-  font-size: 32px;
+  font-size: 16px;
+}
+
+table,
+th,
+td {
+  padding: 8px;
+  text-align: start;
+  border: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 16px;
+}
+
+th:nth-child(even) {
+  background-color: #fc3;
 }
 
 /*
