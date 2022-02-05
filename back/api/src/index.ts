@@ -23,9 +23,10 @@ app.register(mercurius, {
     }
   },
   graphiql: true,
+
   path: '/',
 })
 
 app
-  .listen(3010)
+  .listen(3010, '0.0.0.0')
   .then(() => console.log(`🚀 Server ready at http://localhost:3010/graphiql`))

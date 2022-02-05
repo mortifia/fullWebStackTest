@@ -11,7 +11,7 @@ body {
 
 table,
 th,
-td {
+tr {
   padding: 8px;
   text-align: start;
   border: 1px solid black;
@@ -24,6 +24,9 @@ table {
 
 th:nth-child(even) {
   background-color: #fc3;
+}
+tr:nth-child(even) {
+  background-color: #ffe699;
 }
 
 /*

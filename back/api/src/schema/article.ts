@@ -1,9 +1,17 @@
 import { Prisma, PrismaClient } from '@prisma/client'
-import { extendType, inputObjectType, list, nonNull, objectType } from 'nexus'
+import {
+  extendType,
+  inputObjectType,
+  list,
+  nonNull,
+  objectType,
+  intArg,
+} from 'nexus'
 import { Article } from 'nexus-prisma/dist-cjs/runtime/index'
 import {
   ArgsRecord,
   asNexusMethod,
+  booleanArg,
   NexusObjectTypeDef,
   scalarType,
 } from 'nexus/dist/core'
@@ -72,6 +80,28 @@ export const articleAdd = extendType({
         ).map(r => (r.status === 'fulfilled' ? r.value : r.reason))
         // console.log(tmp)
         return tmp
+      },
+    })
+  },
+})
+
+export const articleDel = extendType({
+  type: 'Mutation',
+  definition(t) {
+    t.field('articlesDel', {
+      type: 'Int',
+      args: { articlesId: list(nonNull(intArg())) },
+      async resolve(
+        _,
+        __: {
+          articlesId: number[]
+        },
+        ctx: context
+      ) {
+        const tmp = await ctx.prisma.article.deleteMany({
+          where: { id: { in: __.articlesId } },
+        })
+        return tmp.count
       },
     })
   },
