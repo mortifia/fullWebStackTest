@@ -20,7 +20,7 @@ type article = {
 export const getServerSideProps = async () => {
   const articles = (
     await (
-      await fetch('http://localhost:3010/', {
+      await fetch('http://127.0.0.1:3010/', {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
