@@ -12,6 +12,7 @@ import {
   ArgsRecord,
   asNexusMethod,
   booleanArg,
+  NexusNullDef,
   NexusObjectTypeDef,
   scalarType,
 } from 'nexus/dist/core'
@@ -45,6 +46,22 @@ const _articleInput = inputObjectType({
     t.nullable.boolean(Article.private.name)
   },
 })
+const _articleInputMod = inputObjectType({
+  name: Article.$name + 'ModInput',
+  description: Article.$description,
+  definition(t) {
+    t.nonNull.field(Article.id)
+    t.nullable.string(Article.title.name, {
+      description: Article.title.description,
+    })
+    t.nullable.string(Article.data.name, {
+      description: Article.data.description,
+    })
+    t.nullable.boolean(Article.private.name, {
+      description: Article.private.description,
+    })
+  },
+})
 
 export const article = extendType({
   type: 'Query',
@@ -75,6 +92,30 @@ export const articleAdd = extendType({
           await Promise.allSettled(
             __.articles.map(article =>
               ctx.prisma.article.create({ data: article })
+            )
+          )
+        ).map(r => (r.status === 'fulfilled' ? r.value : r.reason))
+        // console.log(tmp)
+        return tmp
+      },
+    })
+  },
+})
+
+export const articleMod = extendType({
+  type: 'Mutation',
+  definition(t) {
+    t.list.field('articlesMod', {
+      type: _article,
+      args: { articles: list(_articleInputMod) },
+      async resolve(_, __: { articles: any[] }, ctx: context) {
+        const tmp = (
+          await Promise.allSettled(
+            __.articles.map(article =>
+              ctx.prisma.article.update({
+                where: { id: article.id },
+                data: article,
+              })
             )
           )
         ).map(r => (r.status === 'fulfilled' ? r.value : r.reason))
