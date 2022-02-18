@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="heuuu.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      const debounce = fn => {
+        let frame
+        return (...params) => {
+          if (frame) {
+            cancelAnimationFrame(frame)
+          }
+          frame = requestAnimationFrame(() => {
+            fn(...params)
+          })
+        }
+      }
+      const storeScroll = () => {
+        document.documentElement.dataset.scroll = window.scrollY
+      }
+      document.addEventListener('scroll', debounce(storeScroll), {
+        passive: true,
+      })
+      storeScroll()
+
+      const coucou = () => {
+        console.log('coucou')
+      }
+    </script>
+    <div class="master">
+      <h1 class="master-title">Heuuu</h1>
+
+      <a>Coucou</a>
+      <a>Coucou</a>
+      <a>Couyou</a>
+      <a>Coucou</a>
+    </div>
+
+    <article>
+      <img src="O5220635-1024x683.jpg" class="article-img-start" />
+      <h1 onclick="coucou()">Heuuu Bonjour</h1>
+      <!--<p class="h1-subtitle">Baby shark shark shark shark shark shark shark</p>-->
+      <p>
+        Lorem ipsum dolor sit amet. Qui voluptas <a>voluptatem</a> vel ipsum
+        facere ut dolorem quidem aut error libero eum galisum aspernatur qui
+        tenetur atque et consectetur galisum. Et corrupti asperiores sed
+        cupiditate incidunt eum magnam quia et voluptatem modi qui dolorum
+        repellat.
+      </p>
+      <h2>
+        Oublie que tu a aucune aucune chance. Dans le doute on ne sait jamais
+      </h2>
+      <p>
+        Lorem ipsum dolor sit amet. Qui voluptas voluptatem vel ipsum facere ut
+        dolorem quidem aut error libero eum galisum aspernatur qui tenetur atque
+        et consectetur galisum. Et corrupti asperiores sed cupiditate incidunt
+        eum magnam quia et voluptatem modi qui dolorum repellat. Sit tenetur
+        ipsa eos minima eius qui consectetur voluptatem est eius cupiditate et
+        nihil rerum id perspiciatis velit est consequatur quibusdam? Et quam
+        molestiae ea dolore placeat aut laborum soluta ut pariatur doloremque.
+        Et minus amet ea nesciunt deleniti eum praesentium nemo ea ipsum nemo
+        qui deserunt? At architecto nihil non suscipit nemo non nihil minus ut
+        consequatur similique et praesentium dignissimos non consectetur
+        provident est modi quia?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet. Qui voluptas voluptatem vel ipsum facere ut
+        dolorem quidem aut error libero eum galisum aspernatur qui tenetur atque
+        et consectetur galisum. Et corrupti asperiores sed cupiditate incidunt
+        eum magnam quia et voluptatem modi qui dolorum repellat. Sit tenetur
+        ipsa eos minima eius qui consectetur voluptatem est eius cupiditate et
+        nihil rerum id perspiciatis velit est consequatur quibusdam? Et quam
+        molestiae ea dolore placeat aut laborum soluta ut pariatur doloremque.
+        Et minus amet ea nesciunt deleniti eum praesentium nemo ea ipsum nemo
+        qui deserunt? At architecto nihil non suscipit nemo non nihil minus ut
+        consequatur similique et praesentium dignissimos non consectetur
+        provident est modi quia?
+      </p>
+      <h2>vous voulez vos valises vernies ?</h2>
+      <p class="h1-subtitle">
+        il etait une fois une coquiette dans l'emicicle du pouvoir
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet. Qui voluptas voluptatem vel ipsum facere ut
+        dolorem quidem aut error libero eum galisum aspernatur qui tenetur atque
+        et consectetur galisum. Et corrupti asperiores sed cupiditate incidunt
+        eum magnam quia et voluptatem modi qui dolorum repellat. Sit tenetur
+        ipsa eos minima eius qui consectetur voluptatem est eius cupiditate et
+        nihil rerum id perspiciatis velit est consequatur quibusdam? Et quam
+        molestiae ea dolore placeat aut laborum soluta ut pariatur doloremque.
+        Et minus amet ea nesciunt deleniti eum praesentium nemo ea ipsum nemo
+        qui deserunt? At architecto nihil non suscipit nemo non nihil minus ut
+        consequatur similique et praesentium dignissimos non consectetur
+        provident est modi quia?
+      </p>
+    </article>
+    <article>
+      <img src="Tokyo-Saryo.jpg" class="article-img-start" />
+      <h1 onclick="coucou()">Heuuu Bonjour</h1>
+      <!--<p class="h1-subtitle">Baby shark shark shark shark shark shark shark</p>-->
+      <p>
+        Lorem ipsum dolor sit amet. Qui voluptas voluptatem vel ipsum facere ut
+        dolorem quidem aut error libero eum galisum aspernatur qui tenetur atque
+        et consectetur galisum. Et corrupti asperiores sed cupiditate incidunt
+        eum magnam quia et voluptatem modi qui dolorum repellat.
+      </p>
+      <h2>Oublie que tu a aucune chance. Dans le doute on ne sait jamais</h2>
+      <p>
+        Lorem ipsum dolor sit amet. Qui voluptas voluptatem vel ipsum facere ut
+        dolorem quidem aut error libero eum galisum aspernatur qui tenetur atque
+        et consectetur galisum. Et corrupti asperiores sed cupiditate incidunt
+        eum magnam quia et voluptatem modi qui dolorum repellat. Sit tenetur
+        ipsa eos minima eius qui consectetur voluptatem est eius cupiditate et
+        nihil rerum id perspiciatis velit est consequatur quibusdam? Et quam
+        molestiae ea dolore placeat aut laborum soluta ut pariatur doloremque.
+        Et minus amet ea nesciunt deleniti eum praesentium nemo ea ipsum nemo
+        qui deserunt? At architecto nihil non suscipit nemo non nihil minus ut
+        consequatur similique et praesentium dignissimos non consectetur
+        provident est modi quia?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet. Qui voluptas voluptatem vel ipsum facere ut
+        dolorem quidem aut error libero eum galisum aspernatur qui tenetur atque
+        et consectetur galisum. Et corrupti asperiores sed cupiditate incidunt
+        eum magnam quia et voluptatem modi qui dolorum repellat. Sit tenetur
+        ipsa eos minima eius qui consectetur voluptatem est eius cupiditate et
+        nihil rerum id perspiciatis velit est consequatur quibusdam? Et quam
+        molestiae ea dolore placeat aut laborum soluta ut pariatur doloremque.
+        Et minus amet ea nesciunt deleniti eum praesentium nemo ea ipsum nemo
+        qui deserunt? At architecto nihil non suscipit nemo non nihil minus ut
+        consequatur similique et praesentium dignissimos non consectetur
+        provident est modi quia?
+      </p>
+
+      <p>il etait une fois une coquiette</p>
+    </article>
+  </body>
+</html>
