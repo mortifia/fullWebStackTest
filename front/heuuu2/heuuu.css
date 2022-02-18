@@ -140,6 +140,9 @@ html[data-scroll='0'] .master * {
   display: unset;
 }
 
+html:not([data-scroll='0']) .master:hover *:nth-child(2) {
+  margin-left: 3rem;
+}
 html:not([data-scroll='0']) .master:hover *:last-child {
   margin-right: 0;
 }
