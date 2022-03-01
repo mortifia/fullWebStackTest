@@ -57,10 +57,6 @@ function Home(/*props: InferGetServerSidePropsType<typeof getServerSideProps>*/)
     passive: true,
   })
   storeScroll()
-
-  const coucou = () => {
-    console.log('coucou')
-  }
   return (
     <div className={styles.container}>
       <Head>
