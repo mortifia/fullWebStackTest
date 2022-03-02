@@ -7,7 +7,12 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import React from 'react'
+import { useContext } from 'react'
+import { ContextScrollY } from './_app'
 //import { article } from '../../../back/api/src/schema/article'
+
+import imgTemple from '../public/temple.jpg'
+import imgTokyoSaryo from '../public/Tokyo-Saryo.jpg'
 
 type article = {
   id?: number
@@ -39,44 +44,16 @@ type article = {
 }*/
 
 function Home(/*props: InferGetServerSidePropsType<typeof getServerSideProps>*/) {
-  const debounce = fn => {
-    let frame
-    return (...params) => {
-      if (frame) {
-        cancelAnimationFrame(frame)
-      }
-      frame = requestAnimationFrame(() => {
-        fn(...params)
-      })
-    }
-  }
-  const storeScroll = () => {
-    document.documentElement.dataset.scroll = window.scrollY
-  }
-  document.addEventListener('scroll', debounce(storeScroll), {
-    passive: true,
-  })
-  storeScroll()
-
-
-
-  const coucou = {
-    id:64,
-    name:"heuuu",
-    sexe:69,
-  }
-
-  console.log({...coucou, id:64})
-  }
+  const scrollY = useContext(ContextScrollY)
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>Chatounerie</title>
         <meta name="description" content="Miaou :3" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div className="master">
+        <div className={`master ${scrollY == 0 ? '' : 'scroll'}`}>
           <h1 className="master-title">Heuuu</h1>
 
           <a>Coucou</a>
@@ -85,7 +62,13 @@ function Home(/*props: InferGetServerSidePropsType<typeof getServerSideProps>*/)
           <a>Coucou</a>
         </div>
         <article>
-          <img src="O5220635-1024x683.jpg" className="article-img-start" />
+          <Image
+            src={imgTemple}
+            alt="temple"
+            className="article-img-start"
+            height={512}
+            layout="responsive"
+          />
           <h1>Heuuu Bonjour</h1>
           <p>
             Lorem ipsum dolor sit amet. Qui voluptas <a>voluptatem</a> vel ipsum
@@ -146,7 +129,13 @@ function Home(/*props: InferGetServerSidePropsType<typeof getServerSideProps>*/)
           </p>
         </article>
         <article>
-          <img src="Tokyo-Saryo.jpg" className="article-img-start" />
+          <Image
+            src={imgTokyoSaryo}
+            alt=" Tokyo-Saryo"
+            className="article-img-start"
+            height={512}
+            layout="responsive"
+          />
           <h1>Heuuu Bonjour</h1>
           <p>
             Lorem ipsum dolor sit amet. Qui voluptas voluptatem vel ipsum facere
@@ -190,7 +179,7 @@ function Home(/*props: InferGetServerSidePropsType<typeof getServerSideProps>*/)
           <p>il etait une fois une coquiette</p>
         </article>
       </main>
-    </div>
+    </>
   )
 }
 

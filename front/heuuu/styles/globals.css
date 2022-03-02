@@ -57,7 +57,7 @@ article {
     drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
   border-radius: 0.75rem;
   max-width: 68rem;
-  margin: 5rem auto;
+  margin: 2rem auto;
   overflow: hidden;
   padding-bottom: 1.25rem;
 }
@@ -65,7 +65,6 @@ article {
 article .article-img-start {
   width: 100%;
   aspect-ratio: 32/12;
-  background-image: url(../public/Tokyo-Saryo.jpg);
   background-position: center;
   object-position: center;
   background-size: cover;
@@ -74,7 +73,7 @@ article .article-img-start {
 
 h1 {
   color: var(--main);
-  margin: 1.25rem 2rem;
+  margin: 1.5rem 2rem;
   margin-bottom: 1.35rem;
   font-size: 2rem;
 }
@@ -87,7 +86,7 @@ h2 {
 
 p {
   margin: 1.25em 3rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .h1-subtitle {
@@ -137,7 +136,7 @@ a:hover {
   align-items: center;
 }
 
-html:not([data-scroll='0']) .master {
+.master.scroll {
   top: 0rem;
   left: 0rem;
 
@@ -152,7 +151,7 @@ html:not([data-scroll='0']) .master {
   align-items: baseline;
 }
 
-html:not([data-scroll='0']) .master:hover {
+.master:hover.scroll {
   padding-top: 0.05rem;
   padding-bottom: 0.6rem;
 }
@@ -167,14 +166,15 @@ html:not([data-scroll='0']) .master:hover {
 }
 
 .master:hover *,
-html[data-scroll='0'] .master * {
+.master:not(.scroll) * {
   display: unset;
 }
 
-html:not([data-scroll='0']) .master:hover *:nth-child(2) {
+.master:hover.scroll *:nth-child(2) {
   margin-left: 3rem;
 }
-html:not([data-scroll='0']) .master:hover *:last-child {
+
+.master:hover.scroll *:last-child {
   margin-right: 0;
 }
 
@@ -189,4 +189,37 @@ html:not([data-scroll='0']) .master:hover *:last-child {
   font-weight: 700;
 
   justify-self: start;
+}
+
+@media screen and (max-width: 900px) {
+  body {
+    padding: 32px 0;
+  }
+
+  body:first-of-type {
+    margin-top: 0;
+  }
+
+  article {
+    border-radius: 0;
+    margin: 5rem auto;
+  }
+
+  h1 {
+    margin: 1.5rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    margin: 1rem 1rem;
+  }
+
+  p {
+    margin: 1em 1rem;
+  }
+
+  .h1-subtitle {
+    margin: 0.3rem 1.5rem;
+  }
 }
