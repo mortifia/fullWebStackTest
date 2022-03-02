@@ -148,7 +148,8 @@ a:hover {
   backdrop-filter: blur(1px);
 
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: unset;
+  grid-auto-rows: min-content;
   width: min-content;
   max-width: 100vw;
   align-items: baseline;
@@ -173,13 +174,13 @@ a:hover {
   display: unset;
 }
 
-.master:hover.scroll *:nth-child(2) {
+/*.master:hover.scroll *:nth-child(2) {
   margin-left: 3rem;
-}
+}*/
 
-.master:hover.scroll *:last-child {
+/*.master:hover.scroll *:last-child {
   margin-right: 0;
-}
+}*/
 
 .master-title,
 .master-title:hover {
