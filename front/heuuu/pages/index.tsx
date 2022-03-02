@@ -111,7 +111,7 @@ function Home(/*props: InferGetServerSidePropsType<typeof getServerSideProps>*/)
           </p>
           <h2>vous voulez vos valises vernies ?</h2>
           <p className="h1-subtitle">
-            il etait une fois une coquiette dans l'emicicle du pouvoir
+            il etait une fois une coquiette dans l&lsquo;emicicle du pouvoir
           </p>
           <p>
             Lorem ipsum dolor sit amet. Qui voluptas voluptatem vel ipsum facere
