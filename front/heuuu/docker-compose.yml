@@ -3,7 +3,7 @@ services:
     build: .
     restart: always
     expose:
-      - "3000:3000"
+      - "3000"
 
   nginx:
     image: nginx:1.19.2-alpine
