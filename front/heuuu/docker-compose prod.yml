@@ -1,0 +1,49 @@
+# $ docker-compose -f docker-compose\ prod.yml up -d
+#
+#
+#! tout les 3 mois !!!!
+#
+#! $ docker-compose -f docker-compose\ prod.yml run --rm certbot renew
+#
+# met a jour les certificats
+#
+#
+services:
+  nextjs:
+    build: .
+    restart: always
+    expose:
+      - "3000"
+
+  # heuuu_api:
+  #   image: heuuu_api
+
+  #   ports:
+  #      - "3011:3010"
+  #   expose:
+  #      - "3011"
+  #   restart: always
+
+  nginx:
+    image: nginx:1.19.2-alpine
+    hostname: nginx
+    restart: always
+    volumes:
+      - ./nginx prod.conf:/etc/nginx/nginx.conf:ro
+
+      - ./certbot/www:/var/www/certbot/:ro #test
+      - ./certbot/conf/:/etc/nginx/ssl/:ro #test
+    ports:
+      - "80:80"
+      - "443:443"
+      - "3010:3010"
+    depends_on:
+      - nextjs
+
+  certbot: #test
+    image: certbot/certbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
+    depends_on:
+      - nginx
