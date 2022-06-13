@@ -1,0 +1,35 @@
+.main article {
+  min-height: 68vh;
+  display: flex;
+}
+
+.main #grid {
+  margin: auto;
+  border-spacing: 0;
+  border-collapse: collapse;
+  color: hsl(32, 98%, 65%);
+}
+
+.main col {
+  width: 4rem;
+  height: 4rem;
+  font-size: 36px;
+  border: 1px solid #a5a5a5;
+  text-align: center;
+}
+
+.main col:nth-child(1) td {
+  border-top: 0;
+}
+
+.main col:nth-child(3) td {
+  border-bottom: 0;
+}
+
+.main col:nth-child(1) {
+  border-left: 0;
+}
+
+.main col:nth-child(3) {
+  border-right: 0;
+}
